@@ -11,3 +11,4 @@ class Product:
         self.name = name
         self.price = price
         self.quantity = quantity
+        self.active = True
