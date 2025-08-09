@@ -29,6 +29,7 @@ class Product:
     def is_active(self):
         return self.active
 
+
     def activate(self):
         self.active = True
 
