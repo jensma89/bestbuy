@@ -57,4 +57,3 @@ class Product:
             self.active = False
 
         return self.price * quantity
-

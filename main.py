@@ -1,34 +1,59 @@
-import products
-import store
+from store import Store
+from products import Product
+
+
+def start(best_buy):
+    while True:
+        print("\nStore Menu")
+        print("-" * 10)
+        print("1. List all products in the store")
+        print("2. Show total amount in store")
+        print("3. Make an order")
+        print("4. Quit")
+
+        user_input = input("Please choose a number: ")
+
+        if user_input == "1":
+            for product in best_buy.get_all_products():
+                print(product.show())
+
+        elif user_input == "2":
+            print("Total quantity in store:",
+                  best_buy.get_total_quantity())
+
+        elif user_input == "3":
+            shopping_list = []
+            product_index = int(input("Wich product do you want?"
+                                      "(enter a number) ")) - 1
+            quantity = int(input("What amount do you want?"
+                                 "(enter a number) "))
+            product = best_buy.get_all_products()[product_index]
+            shopping_list.append((product, quantity))
+            total = best_buy.order(shopping_list)
+            print("Total price: ", total)
+
+        elif user_input == "4":
+            print("\nBye!")
+            break
+
+        else:
+            print("Invalid choice. Try again.")
 
 def main():
+    product_list = [
+        Product("MacBook Air M2",
+                price=1450,
+                quantity=100),
+        Product("Bose QuietComfort Earbuds",
+                price=250,
+                quantity=500),
+        Product("Google Pixel 7",
+                price=500,
+                quantity=250)
+    ]
 
-    # setup initial stock of inventory
-    product_list = [products.Product("MacBook Air M2",
-                                     price=1450,
-                                     quantity=100),
-                    products.Product("Bose QuietComfort Earbuds",
-                                     price=250,
-                                     quantity=500),
-                    products.Product("Google Pixel 7",
-                                     price=500,
-                                     quantity=250)
-                    ]
-
-
-    best_buy = store.Store(product_list)
-
-
-    def start(best_buy):
-        while True:
-            print("\nStore_Menu")
-            print("\n-" * 10)
-            print("\n1. List all products in the store")
-            print("\n2. Show total amount in store")
-            print("\n3. Make an order")
-            print("\n4. Quit")
-
-            user_input = input("\nPlease choose a number: ")
+    best_buy = Store(product_list)
+    start(best_buy)
 
 
 if __name__ == "__main__":
