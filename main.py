@@ -1,8 +1,18 @@
+"""
+main.py
+
+Show the menu options
+and has the logic to handle the app.
+"""
+
 from store import Store
 from products import Product
 
 
 def start(best_buy):
+    """Main menu options and logic."""
+
+    # Listener loop to show the menu
     while True:
         print("\nStore Menu")
         print("-" * 10)
@@ -13,6 +23,7 @@ def start(best_buy):
 
         user_input = input("Please choose a number: ")
 
+        # Menu logic
         if user_input == "1":
             for product in best_buy.get_all_products():
                 print(product.show())
@@ -40,6 +51,7 @@ def start(best_buy):
             print("Invalid choice. Try again.")
 
 def main():
+    """Initialisation to have products in the store."""
     product_list = [
         Product("MacBook Air M2",
                 price=1450,
