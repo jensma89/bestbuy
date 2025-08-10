@@ -17,7 +17,18 @@ def main():
 
 
     best_buy = store.Store(product_list)
-    
+
+
+    def start(best_buy):
+        while True:
+            print("\nStore_Menu")
+            print("\n-" * 10)
+            print("\n1. List all products in the store")
+            print("\n2. Show total amount in store")
+            print("\n3. Make an order")
+            print("\n4. Quit")
+
+            user_input = input("\nPlease choose a number: ")
 
 
 if __name__ == "__main__":
