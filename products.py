@@ -8,19 +8,24 @@ and handle some operations for products.
 class Product:
     """Represents products that available in the store."""
 
-    def __init__(self, name, price, quantity):
-        """Initialize products and raise errors."""
-        if not name:
-            raise ValueError("Name cannot be empty")
-        if price < 0:
-            raise ValueError("Price cannot be negative")
-        if quantity < 0:
-            raise ValueError("Quantity cannot be negative")
+    try:
+        def __init__(self, name, price, quantity):
+            """Initialize products and raise errors."""
+            if not name:
+                raise ValueError("Name cannot be empty")
+            if price < 0:
+                raise ValueError("Price cannot be negative")
+            if quantity < 0:
+                raise ValueError("Quantity cannot be negative")
 
-        self.name = name
-        self.price = price
-        self.quantity = quantity
-        self.active = True
+
+            self.name = name
+            self.price = price
+            self.quantity = quantity
+            self.active = True
+
+    except ValueError as e:
+        print(f"Error: {e}")
 
 
     def get_quantity(self):
@@ -31,11 +36,16 @@ class Product:
     def set_quantity(self, quantity):
         """Set the quantity of the product
         and check is not zero or negative."""
-        if quantity < 0:
-            raise ValueError("Quantity cannot be negative")
-        self.quantity = quantity
-        if quantity == 0:
-            self.active = False
+
+        try:
+            if quantity < 0:
+                raise ValueError("Quantity cannot be negative")
+            self.quantity = quantity
+            if quantity == 0:
+                self.active = False
+
+        except ValueError as e:
+            print(f"Error: {e}")
 
 
     def is_active(self):
@@ -62,15 +72,20 @@ class Product:
 
     def buy(self, quantity):
         """Function to buy product. With error handling."""
-        if quantity <= 0:
-            raise ValueError("Quantity must be positive")
-        if not self.active:
-            raise Exception("Product is not active")
-        if quantity > self.quantity:
-            raise Exception("Not enough products in stock!")
 
-        self.quantity -= quantity
-        if self.quantity == 0:
-            self.active = False
+        try:
+            if quantity <= 0:
+                raise ValueError("Quantity must be positive")
+            if not self.active:
+                raise Exception("Product is not active")
+            if quantity > self.quantity:
+                raise Exception("Not enough products in stock!")
+
+            self.quantity -= quantity
+            if self.quantity == 0:
+                self.active = False
+
+        except ValueError as e:
+            print(f"Error: {e}")
 
         return self.price * quantity
