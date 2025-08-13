@@ -85,7 +85,7 @@ class Product:
             if self.quantity == 0:
                 self.active = False
 
-        except ValueError as e:
+        except (ValueError, Exception) as e:
             print(f"Error: {e}")
 
         return self.price * quantity

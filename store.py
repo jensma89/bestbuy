@@ -43,5 +43,8 @@ class Store:
         """Return the total price of the order."""
         total_price = 0.0
         for product, quantity in shopping_list:
-            total_price += product.buy(quantity)
+            try:
+                total_price += product.buy(quantity)
+            except Exception as e:
+                print(f"Error: {e}")
         return total_price

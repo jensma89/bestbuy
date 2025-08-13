@@ -34,7 +34,7 @@ def start(best_buy):
 
         elif user_input == "3":
             shopping_list = []
-            product_index = int(input("Wich product do you want?"
+            product_index = int(input("Which product do you want?"
                                       "(enter a number) ")) - 1
             quantity = int(input("What amount do you want?"
                                  "(enter a number) "))
